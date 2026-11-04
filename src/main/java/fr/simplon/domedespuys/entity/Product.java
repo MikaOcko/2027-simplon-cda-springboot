@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -35,4 +37,7 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "brand_id", nullable = true)
     private Brand brand;
+
+    @OneToMany(mappedBy = "product")
+    private List<Image> images = new ArrayList<>();
 }
