@@ -20,4 +20,8 @@ public class OrderProduct {
 
     @Column(nullable = false)
     private Integer price;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id", nullable = true)
+    private Product product;
 }
