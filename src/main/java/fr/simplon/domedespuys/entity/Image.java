@@ -25,5 +25,4 @@ public class Image {
 
     @Column(nullable = false)
     private static Boolean isDefault;
-
 }

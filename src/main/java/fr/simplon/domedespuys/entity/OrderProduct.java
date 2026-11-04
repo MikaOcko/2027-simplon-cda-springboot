@@ -1,0 +1,22 @@
+package fr.simplon.domedespuys.entity;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Entity
+public class OrderProduct {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private static Long id;
+
+    @Column(nullable = false)
+    private static int quantity;
+
+    @Column(nullable = false)
+    private static int price;
+}
