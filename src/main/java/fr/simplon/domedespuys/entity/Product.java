@@ -31,4 +31,8 @@ public class Product {
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
+
+    @ManyToOne
+    @JoinColumn(name = "brand_id", nullable = true)
+    private Brand brand;
 }
