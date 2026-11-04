@@ -26,4 +26,12 @@ public class Order {
 
     @Column(nullable = false)
     private String status = EnumPurchaseStatus.PENDING.getValue();
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = true)
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "address_id", nullable = true)
+    private Address address;
 }
