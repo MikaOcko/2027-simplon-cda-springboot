@@ -25,5 +25,5 @@ public class Order {
     private static LocalDateTime createdAt;
 
     @Column(nullable = false)
-    private static EnumPurchaseStatus status;
+    private static EnumPurchaseStatus status = EnumPurchaseStatus.PENDING;
 }
