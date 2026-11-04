@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -34,4 +36,7 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "address_id", nullable = true)
     private Address address;
+
+    @OneToMany(mappedBy = "purchase")
+    private List<OrderProduct> productPurchases = new ArrayList<>();
 }

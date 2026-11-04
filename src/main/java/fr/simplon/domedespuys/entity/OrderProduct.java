@@ -24,4 +24,8 @@ public class OrderProduct {
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = true)
     private Product product;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id", nullable = false)
+    private Order purchase;
 }
