@@ -15,8 +15,8 @@ public class OrderProduct {
     private Long id;
 
     @Column(nullable = false)
-    private int quantity;
+    private Integer quantity;
 
     @Column(nullable = false)
-    private int price;
+    private Integer price;
 }
