@@ -15,20 +15,20 @@ import java.time.LocalDateTime;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private static Long id;
+    private Long id;
 
     @Column(nullable = false, length = 20)
-    private static String label;
+    private String label;
 
     @Column(nullable = true, length = 255)
-    private static String description;
+    private String description;
 
     @Column(nullable = false)
-    private static BigDecimal price;
+    private BigDecimal price;
 
     @Column(nullable = false, length = 20)
-    private static  String slug;
+    private  String slug;
 
     @Column(nullable = false)
-    private static LocalDateTime createdAt;
+    private LocalDateTime createdAt;
 }

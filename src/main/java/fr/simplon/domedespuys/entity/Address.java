@@ -7,39 +7,39 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Entity
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private static Long id;
+    private Long id;
 
     @Column(nullable = false, length = 20)
-    private static String line;
+    private String line;
 
     @Column(nullable = true, length = 20)
-    private static String extraLine;
+    private String extraLine;
 
     @Column(nullable = false, length = 20)
-    private static String city;
+    private String city;
 
     @Column(nullable = false, length = 20)
-    private static String zipCode;
+    private String zipCode;
 
     @Column(nullable = false, length = 20)
-    private static String country;
+    private String country;
 
     @Column(nullable = true, length = 20)
-    private static String phone;
+    private String phone;
 
     @Column(nullable = false, length = 20)
-    private static String firstname;
+    private String firstname;
 
     @Column(nullable = false, length = 20)
-    private static String lastname;
+    private String lastname;
 
     @Column(nullable = false)
-    private static LocalDateTime createdAt;
+    private LocalDateTime createdAt;
 }

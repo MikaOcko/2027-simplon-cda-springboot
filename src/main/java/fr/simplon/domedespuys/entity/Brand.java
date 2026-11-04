@@ -12,15 +12,15 @@ import lombok.NoArgsConstructor;
 public class Brand {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private static Long id;
+    private Long id;
 
     @Column(nullable = false, length = 20)
-    private static String label;
-    
+    private String label;
+
     @Column(nullable = true, length = 20)
-    private static String logo;
-    
+    private String logo;
+
     @Column(nullable = false, length = 20)
-    private static String slug;
-    
+    private String slug;
+
 }

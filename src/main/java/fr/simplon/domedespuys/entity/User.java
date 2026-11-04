@@ -14,26 +14,23 @@ import java.time.LocalDateTime;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private static Long id;
+    private Long id;
 
     @Column(nullable = false, unique = true, length = 50)
-    public static String email;
+    public String email;
 
     @Column(nullable = false, length = 50)
-    private static String password;
+    private String password;
 
     @Column(nullable = false, length = 50)
-    private static String firstname;
+    private String firstname;
 
     @Column(nullable = false, length = 50)
-    public static String lastname;
+    public String lastname;
 
     @Column(nullable = true, length = 50)
-    public static String phone;
+    public String phone;
 
     @Column(nullable = false)
-    public static LocalDateTime createdAt;
-
-
-
+    public LocalDateTime createdAt;
 }

@@ -12,11 +12,11 @@ import lombok.NoArgsConstructor;
 public class OrderProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private static Long id;
+    private Long id;
 
     @Column(nullable = false)
-    private static int quantity;
+    private int quantity;
 
     @Column(nullable = false)
-    private static int price;
+    private int price;
 }

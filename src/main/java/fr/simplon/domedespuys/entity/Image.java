@@ -15,14 +15,14 @@ import java.time.LocalDateTime;
 public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private static Long id;
+    private Long id;
 
     @Column(nullable = false, length = 20)
-    private static String path;
+    private String path;
 
     @Column(nullable = false, length = 4)
-    private static String extension;
+    private String extension;
 
     @Column(nullable = false)
-    private static Boolean isDefault;
+    private Boolean isDefault;
 }

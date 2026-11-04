@@ -16,13 +16,13 @@ import java.time.LocalDateTime;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private static Long id;
+    private Long id;
 
     @Column(length = 20, unique = true, nullable = false)
-    private static String number;
+    private String number;
 
     @Column(nullable = false)
-    private static LocalDateTime createdAt;
+    private LocalDateTime createdAt;
 
     @Column(nullable = false)
     private String status = EnumPurchaseStatus.PENDING.getValue();
