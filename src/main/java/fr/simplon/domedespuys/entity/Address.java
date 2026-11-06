@@ -18,10 +18,10 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, length = 50)
     private String line;
 
-    @Column(nullable = true, length = 20)
+    @Column(nullable = true, length = 50)
     private String extraLine;
 
     @Column(nullable = false, length = 20)

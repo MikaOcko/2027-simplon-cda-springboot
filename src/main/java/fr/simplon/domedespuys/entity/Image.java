@@ -19,10 +19,10 @@ public class Image {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, length = 100)
     private String path;
 
-    @Column(nullable = false, length = 4)
+    @Column(nullable = false, length = 5)
     private String extension;
 
     @Column(nullable = false)

@@ -20,7 +20,7 @@ public class Brand {
     @Column(nullable = false, length = 20)
     private String label;
 
-    @Column(nullable = true, length = 20)
+    @Column(nullable = true, length = 20, columnDefinition = "TEXT")
     private String logo;
 
     @Column(nullable = false, length = 20)

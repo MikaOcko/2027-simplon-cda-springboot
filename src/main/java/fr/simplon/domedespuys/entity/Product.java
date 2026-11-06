@@ -26,7 +26,7 @@ public class Product {
     private String description;
 
     @Column(nullable = false)
-    private BigDecimal price;
+    private Integer price;
 
     @Column(nullable = false, length = 20)
     private  String slug;
@@ -39,6 +39,7 @@ public class Product {
     private Brand brand;
 
     @OneToMany(mappedBy = "product")
+    @Column(columnDefinition = "TEXT")
     private List<Image> images = new ArrayList<>();
 
     @OneToMany(mappedBy = "product")
