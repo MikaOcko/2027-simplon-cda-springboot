@@ -13,5 +13,9 @@ public class ProductView {
 
     // Infos que l'on affiche
     public interface ProductListView extends Label, Price, Slug, MainImage {}
-    public interface ProductDetailView extends ProductListView, Description, Brand, Images {}
+    public interface ProductDetailView extends
+            ProductListView,
+            Description,
+            Brand,
+            Images {}
 }

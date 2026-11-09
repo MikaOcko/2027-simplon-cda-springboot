@@ -229,7 +229,7 @@ public class DataLoaderConfig implements CommandLineRunner {
                 User user = users.get(random.nextInt(users.size()));
                 purchase.setUser(user);
 
-                Address address = addresses.get(random.nextInt(users.size()));
+                Address address = addresses.get(random.nextInt(addresses.size()));
                 purchase.setAddress(address);
 
                 orderRepository.save(purchase);
