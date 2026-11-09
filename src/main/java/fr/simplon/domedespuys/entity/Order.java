@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import fr.simplon.domedespuys.enumeration.EnumPurchaseStatus;
 import fr.simplon.domedespuys.view.AddressView;
 import fr.simplon.domedespuys.view.OrderView;
+import fr.simplon.domedespuys.view.UserView;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -38,7 +39,7 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = true)
-    @JsonView(OrderView.User.class)
+    @JsonView(UserView.UserDetailView.class)
     private User user;
 
     @ManyToOne
