@@ -7,8 +7,8 @@ import lombok.AllArgsConstructor;
 import org.jspecify.annotations.NonNull;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.text.html.Option;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Locale;
@@ -27,6 +27,7 @@ public class DataLoaderConfig implements CommandLineRunner {
     private OrderRepository orderRepository;
     private OrderProductRepository orderProductRepository;
 
+    @Transactional
     @Override
     public void run(String @NonNull ... args) {
         createUsers();
