@@ -12,7 +12,6 @@ public class OrderView {
     public interface OrderListView extends Number, Status{}
     public interface OrderDetailView extends
             OrderListView,
-            Address,
-            CreatedAt,
-            UserView.UserDetailView{}
+            AddressView.AddressDetailView,
+            CreatedAt{}
 }

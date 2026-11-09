@@ -2,6 +2,7 @@ package fr.simplon.domedespuys.entity;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import fr.simplon.domedespuys.enumeration.EnumPurchaseStatus;
+import fr.simplon.domedespuys.view.AddressView;
 import fr.simplon.domedespuys.view.OrderView;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -42,7 +43,7 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "address_id", nullable = true)
-    @JsonView(OrderView.Address.class)
+    @JsonView(AddressView.AddressDetailView.class)
     private Address address;
 
     @OneToMany(mappedBy = "purchase")
