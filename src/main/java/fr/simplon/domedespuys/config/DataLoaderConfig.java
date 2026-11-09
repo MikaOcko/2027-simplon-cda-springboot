@@ -27,23 +27,30 @@ public class DataLoaderConfig implements CommandLineRunner {
     private OrderRepository orderRepository;
     private OrderProductRepository orderProductRepository;
 
-    @Transactional
+    public final Integer NB_USER = 50;
+    public final Integer NB_BRAND= 20;
+    public final Integer NB_ADDRESS= 80;
+    public final Integer NB_PRODUCT= 40;
+    public final Integer NB_IMAGE= 80;
+    public final Integer NB_ORDER = 20;
+    public final Integer NB_ORDER_PRODUCT = 20;
+
     @Override
     public void run(String @NonNull ... args) {
-        createUsers();
-        createBrands();
-        createAddresses();
-        createProducts();
+        //createUsers();
+        //createBrands();
+        //createAddresses();
+        //createProducts();
         createImages();
-        createOrders();
-        createOrderProducts();
+        //createOrders();
+        //createOrderProducts();
     }
 
     private void createUsers() {
         if (0 == userRepository.count()) {
             Faker faker = new Faker(Locale.of("fr"));
 
-            for (int i = 0; i < 20; i++) {
+            for (int i = 0; i < NB_USER; i++) {
                 User user = new User();
                 user.setFirstname(faker.name().firstName());
                 user.setLastname(faker.name().lastName());
@@ -66,7 +73,7 @@ public class DataLoaderConfig implements CommandLineRunner {
         if (0 == brandRepository.count()){
             Faker faker = new Faker(Locale.of("fr"));
 
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < NB_BRAND; i++) {
                 Brand brand = new Brand();
 
                 String label = faker.company().name();
@@ -102,7 +109,7 @@ public class DataLoaderConfig implements CommandLineRunner {
                 throw new IllegalStateException("Aucun utilisateur disponible");
             }
 
-            for (int i = 0; i < 50; i++) {
+            for (int i = 0; i < NB_ADDRESS; i++) {
                 Address address = new Address();
 
                 address.setCity(faker.address().city());
@@ -162,7 +169,7 @@ public class DataLoaderConfig implements CommandLineRunner {
         if (0 == productRepository.count()) {
             Faker faker = new Faker(Locale.of("fr"));
 
-            for (int i = 0; i < 50; i++) {
+            for (int i = 0; i < NB_PRODUCT; i++) {
                 Product product = new Product();
 
                 String label = faker.beer().name();
@@ -180,7 +187,7 @@ public class DataLoaderConfig implements CommandLineRunner {
 
                 product.setDescription("Style : " + faker.beer().style() + "\n Ingredients : " + faker.food().ingredient());
 
-                Optional<Brand> optionalBrand = brandRepository.findById((long) faker.number().numberBetween(1, 50));
+                Optional<Brand> optionalBrand = brandRepository.findById((long) faker.number().numberBetween(1, NB_BRAND));
                 optionalBrand.ifPresent(product::setBrand);
 
                 productRepository.save(product);
@@ -191,20 +198,34 @@ public class DataLoaderConfig implements CommandLineRunner {
     }
 
     private void createImages(){
+        /*
         if (0 == imageRepository.count()) {
             Faker faker = new Faker(Locale.of("fr"));
 
-            for (int i = 0; i < 25; i++) {
+            for (int i = 0; i < NB_IMAGE; i++) {
                 Image image = new Image();
 
                 image.setPath("https://picsum.photos/400/300?r=" + faker.number().randomNumber());
                 image.setExtension(".jpg");
                 image.setIsDefault(faker.bool().bool());
 
-                Optional<Product> optionalProduct = productRepository.findById((long) faker.number().numberBetween(1, 50));
+                Optional<Product> optionalProduct = productRepository.findById((long) faker.number().numberBetween(1, NB_PRODUCT));
                 optionalProduct.ifPresent(image::setProduct);
 
                 imageRepository.save(image);
+            }
+
+            imageRepository.flush();
+        }
+        */
+        if (0 == imageRepository.count()) {
+            List<Product> products = productRepository.findAll();
+            for (Product product : products) {
+                createImagesByProduct(product, true);
+
+                do {
+                    createImagesByProduct(product, false);
+                } while(hasProbability(1, 2));
             }
 
             imageRepository.flush();
@@ -219,7 +240,7 @@ public class DataLoaderConfig implements CommandLineRunner {
             List<Address> addresses = addressRepository.findAll();
             Random random = new Random();
 
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < NB_ORDER; i++) {
                 Order purchase = new Order();
 
                 purchase.setNumber("ORD-" + LocalDateTime.now().getYear() + "-" + faker.number().numberBetween(0, 999999));
@@ -246,7 +267,7 @@ public class DataLoaderConfig implements CommandLineRunner {
             List<Order> purchases = orderRepository.findAll();
             Random random = new Random();
 
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < NB_ORDER_PRODUCT; i++) {
                 OrderProduct purchaseProduct = new OrderProduct();
 
                 purchaseProduct.setQuantity(faker.number().numberBetween(1, 100));
@@ -260,6 +281,16 @@ public class DataLoaderConfig implements CommandLineRunner {
 
             orderProductRepository.flush();
         }
+    }
+
+    private void createImagesByProduct(Product product, boolean isDefault) {
+        Image image = new Image();
+        Random rand = new Random();
+        image.setPath("https://picsum.photos/400/300?r=" + rand.nextInt(NB_IMAGE));
+        image.setExtension("png");
+        image.setIsDefault(isDefault);
+        image.setProduct(product);
+        imageRepository.save(image);
     }
 
     private LocalDateTime getRandomDate(Faker faker, int min, int max) {
