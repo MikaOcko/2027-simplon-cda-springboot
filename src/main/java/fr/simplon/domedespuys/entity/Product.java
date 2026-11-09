@@ -54,13 +54,20 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<OrderProduct> productPurchases = new ArrayList<>();
 
+    /*
+    public void addImage(Image image) {
+        images.add(image);
+        image.setProduct(this);
+    }
+
     @JsonView(ProductView.MainImage.class)
-    public Image getMainImage(Image images[]){
-        for (Image image : images){
-            if (image.getIsDefault()){
+    public Image getMainImage() {
+        for (Image image : images) {
+            if (image.isDefault()) {
                 return image;
             }
         }
-            return null;
+        return null;
     }
+    */
 }

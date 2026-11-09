@@ -37,13 +37,13 @@ public class DataLoaderConfig implements CommandLineRunner {
 
     @Override
     public void run(String @NonNull ... args) {
-        //createUsers();
-        //createBrands();
-        //createAddresses();
-        //createProducts();
+        createUsers();
+        createBrands();
+        createAddresses();
+        createProducts();
         createImages();
-        //createOrders();
-        //createOrderProducts();
+        createOrders();
+        createOrderProducts();
     }
 
     private void createUsers() {

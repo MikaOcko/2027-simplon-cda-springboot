@@ -17,5 +17,6 @@ public class ProductView {
             ProductListView,
             Description,
             Brand,
-            Images {}
+            Images,
+            ImageView.ImageListView {}
 }
