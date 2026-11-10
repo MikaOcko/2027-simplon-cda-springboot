@@ -7,8 +7,8 @@ public interface IProductService extends
 
         ICreate<Product, ProductDTO>,
         IUpdate<Product, ProductDTO>,
-        ICollection,
-        IGetItem
+        ICollection<Product>,
+        IGetItem<Product>
 
 {
 }

@@ -10,7 +10,7 @@ import java.util.List;
 public class ProductServiceImpl implements IProductService {
 
     private ProductRepository productRepository;
-    
+
     @Override
     public List getCollection() {
         return List.of();

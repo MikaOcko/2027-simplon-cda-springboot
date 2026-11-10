@@ -9,7 +9,7 @@ import fr.simplon.domedespuys.entity.User;
 public interface IUserService extends
         ICreate<User, UserPostDTO>,
         IUpdate<User, UserPutDTO>,
-        IGetItem<User>
-        //IDelete
+        IGetItem<User>,
+        IDelete
 {
 }
