@@ -46,4 +46,9 @@ public class UserServiceImpl implements IUserService {
         }
         return user;
     }
+
+    @Override
+    public boolean delete(String id) {
+        return false;
+    }
 }

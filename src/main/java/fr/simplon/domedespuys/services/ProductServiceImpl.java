@@ -21,8 +21,9 @@ public class ProductServiceImpl implements IProductService {
         return null;
     }
 
+
     @Override
-    public Object getById(String id) {
+    public Product getById(String id) {
         return null;
     }
 
