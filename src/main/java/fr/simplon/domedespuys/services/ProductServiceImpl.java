@@ -4,9 +4,13 @@ import fr.simplon.domedespuys.dto.ProductDTO;
 import fr.simplon.domedespuys.entity.Product;
 import fr.simplon.domedespuys.interfaces.IProductService;
 import fr.simplon.domedespuys.repository.ProductRepository;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
+@AllArgsConstructor
 public class ProductServiceImpl implements IProductService {
 
     private ProductRepository productRepository;

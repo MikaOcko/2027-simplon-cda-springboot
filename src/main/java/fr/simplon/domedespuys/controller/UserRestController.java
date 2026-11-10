@@ -2,6 +2,7 @@ package fr.simplon.domedespuys.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import fr.simplon.domedespuys.entity.User;
+import fr.simplon.domedespuys.interfaces.IUserService;
 import fr.simplon.domedespuys.repository.UserRepository;
 import fr.simplon.domedespuys.view.UserView;
 import lombok.AllArgsConstructor;
@@ -17,17 +18,18 @@ import java.util.Optional;
 @AllArgsConstructor
 @RequestMapping("/api/user")
 public class UserRestController {
-    private final UserRepository userRepository;
+    private final IUserService userService;
 
+    /*
     @GetMapping
     @JsonView(UserView.UserListView.class)
     private List<User> getUsers(){
         return userRepository.findAll();
     }
-
+    */
     @GetMapping("/{id}")
     @JsonView(UserView.UserDetailView.class)
-    private Optional<User> getUserById(@PathVariable String id){
-        return userRepository.findById(Long.valueOf(id));
+    private User getUserById(@PathVariable String id){
+        return userService.getById(id);
     }
 }

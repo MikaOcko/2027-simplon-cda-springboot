@@ -6,9 +6,13 @@ import fr.simplon.domedespuys.entity.Brand;
 import fr.simplon.domedespuys.entity.User;
 import fr.simplon.domedespuys.interfaces.IUserService;
 import fr.simplon.domedespuys.repository.UserRepository;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
+@Service
+@AllArgsConstructor
 public class UserServiceImpl implements IUserService {
     private UserRepository userRepository;
 

@@ -5,7 +5,11 @@ import fr.simplon.domedespuys.entity.Address;
 import fr.simplon.domedespuys.interfaces.IAddressService;
 import fr.simplon.domedespuys.repository.AddressRepository;
 import fr.simplon.domedespuys.repository.UserRepository;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
+@AllArgsConstructor
 public class AddressServiceImpl implements IAddressService {
 
     private AddressRepository addressRepository;
