@@ -9,7 +9,7 @@ import fr.simplon.domedespuys.repository.UserRepository;
 public class AddressServiceImpl implements IAddressService {
 
     private AddressRepository addressRepository;
-    
+
     @Override
     public Address create(AddressDTO dto) {
         return null;
