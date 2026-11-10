@@ -25,6 +25,7 @@ public class UserRestController {
     @JsonView(UserView.UserListView.class)
     private List<User> getUsers(){
         return userRepository.findAll();
+        return userService.getCollection();
     }
     */
     @GetMapping("/{id}")
