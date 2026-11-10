@@ -59,7 +59,7 @@ public class BrandServiceImpl implements IBrandService {
         brand.setLabel(dto.label);
         brand.setLogo(dto.logo);
         //brand.setSlug(slugger.slugify(dto.label));
-        brand.setSlug(dto.label);
+        brand.setSlug(dto.label.trim().toLowerCase());
         brandRepository.saveAndFlush(brand);
     }
 

@@ -24,7 +24,6 @@ public class BrandRestController {
         return brandService.getCollection();
     }
 
-
     @GetMapping("/{id}")
     @JsonView(BrandView.BrandDetailView.class)
     public Brand getBrandById(@PathVariable String id){
