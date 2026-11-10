@@ -27,7 +27,7 @@ public class OrderRestController {
     private List<Order> getOrders(){
         return orderService.getCollection();
     }
-    
+
     /*
     @GetMapping("/number/{number}")
     @JsonView(OrderView.OrderDetailView.class)

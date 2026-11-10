@@ -16,8 +16,8 @@ public class ProductServiceImpl implements IProductService {
     private ProductRepository productRepository;
 
     @Override
-    public List getCollection() {
-        return List.of();
+    public List<Product> getCollection() {
+        return productRepository.findAll();
     }
 
     @Override
@@ -28,7 +28,9 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public Product getById(String id) {
-        return null;
+        return productRepository
+                .findById(Long.parseLong(id))
+                .orElse(null);
     }
 
     @Override
