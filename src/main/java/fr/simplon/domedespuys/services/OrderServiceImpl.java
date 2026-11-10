@@ -17,7 +17,8 @@ public class OrderServiceImpl implements IOrderService {
 
     @Override
     public List<Order> getCollection() {
-        return List.of();
+
+        return orderRepository.findAll();
     }
 
     @Override
@@ -27,7 +28,9 @@ public class OrderServiceImpl implements IOrderService {
 
     @Override
     public Order getById(String id) {
-        return null;
+        return orderRepository
+                .findById(Long.parseLong(id))
+                .orElse(null);
     }
 
     @Override
