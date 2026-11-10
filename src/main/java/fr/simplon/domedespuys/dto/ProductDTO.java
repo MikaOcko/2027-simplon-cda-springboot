@@ -8,6 +8,6 @@ public class ProductDTO {
     public String description;
     public Integer price;
     public Long brand_id;
-    public List<String> images;
+    public List<ImageDTO> images;
 
 }
