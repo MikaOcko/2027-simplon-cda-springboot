@@ -7,7 +7,7 @@ public class ProductDTO {
     public String label;
     public String description;
     public Integer price;
-    public Long brand_id;
+    public String brandId;
     public List<ImageDTO> images;
 
 }

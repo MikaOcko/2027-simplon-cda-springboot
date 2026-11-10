@@ -18,7 +18,6 @@ public class BrandServiceImpl implements IBrandService {
 
     @Override
     public List<Brand> getCollection() {
-
         return brandRepository.findAll();
     }
 

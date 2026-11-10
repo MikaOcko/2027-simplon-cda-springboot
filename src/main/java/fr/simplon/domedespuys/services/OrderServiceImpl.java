@@ -17,7 +17,6 @@ public class OrderServiceImpl implements IOrderService {
 
     @Override
     public List<Order> getCollection() {
-
         return orderRepository.findAll();
     }
 
