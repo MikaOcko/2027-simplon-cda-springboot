@@ -6,17 +6,20 @@ import fr.simplon.domedespuys.entity.User;
 import fr.simplon.domedespuys.interfaces.IUserService;
 import fr.simplon.domedespuys.repository.UserRepository;
 
+import java.util.Date;
+
 public class UserServiceImpl implements IUserService {
     private UserRepository userRepository;
 
     @Override
     public User create(UserPostDTO dto) {
         User user = new User();
-        
+
         user.setEmail(dto.email);
         user.setPassword(dto.password);
         user.setFirstname(dto.firstname);
         user.setLastname(dto.lastname);
+        //user.setCreatedAt(new LocalDateTime());
         userRepository.saveAndFlush(user);
 
         return user;
