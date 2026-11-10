@@ -5,6 +5,8 @@ import fr.simplon.domedespuys.entity.Brand;
 
 public interface IBrandService extends
         ICreate<Brand, BrandDTO>,
-        ICollection
-{
-}
+        IUpdate<Brand, BrandDTO>,
+        ICollection<Brand>,
+        IGetItem<Brand>,
+        IDelete
+{}
