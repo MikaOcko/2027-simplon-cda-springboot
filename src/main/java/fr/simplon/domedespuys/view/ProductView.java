@@ -23,5 +23,6 @@ public class ProductView {
     public interface ProductDetailView extends
             ProductListView,
             Description,
+            Images,
             ImageView.ImageListView {}
 }
