@@ -4,13 +4,11 @@ import com.fasterxml.jackson.annotation.JsonView;
 import fr.simplon.domedespuys.dto.BrandDTO;
 import fr.simplon.domedespuys.entity.Brand;
 import fr.simplon.domedespuys.interfaces.IBrandService;
-import fr.simplon.domedespuys.repository.BrandRepository;
 import fr.simplon.domedespuys.view.BrandView;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @AllArgsConstructor

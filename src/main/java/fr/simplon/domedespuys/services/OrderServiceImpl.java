@@ -29,7 +29,7 @@ public class OrderServiceImpl implements IOrderService {
     public Order create(OrderPostDTO dto) {
         Order order = new Order();
 
-        order.setAddress(addressService.getById(dto.addressId);
+        order.setAddress(addressService.getById(dto.addressId));
         order.setCreatedAt(LocalDateTime.now());
         order.setNumber("ORD-" + LocalDateTime.now().getYear() + "-" + (Math.random()*100));
         order.setUser(userService.getById("10"));
