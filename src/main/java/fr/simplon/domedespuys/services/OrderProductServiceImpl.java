@@ -15,8 +15,8 @@ import java.util.List;
 @AllArgsConstructor
 public class OrderProductServiceImpl implements IOrderProductService {
 
-    private OrderProductRepository orderProductRepository;
-    private IProductService productService;
+    private final OrderProductRepository orderProductRepository;
+    private final IProductService productService;
 
     @Override
     public OrderProduct createOrderProduct(Order purchase, OrderProductDTO dto) {
@@ -27,12 +27,16 @@ public class OrderProductServiceImpl implements IOrderProductService {
         orderProduct.setProduct(productService.getById(dto.productId));
         orderProduct.setPurchase(purchase);
 
+        orderProductRepository.saveAndFlush(orderProduct);
+
         return orderProduct;
     }
 
     @Override
     public OrderProduct getById(String id) {
-        return orderProductRepository.getById(Long.parseLong(id));
+        return orderProductRepository
+                .findById(Long.parseLong(id))
+                .orElse(null);
     }
 
     @Override
