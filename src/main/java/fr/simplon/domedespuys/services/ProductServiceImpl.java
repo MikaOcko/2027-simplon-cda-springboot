@@ -30,6 +30,7 @@ public class ProductServiceImpl implements IProductService {
         product.setLabel(dto.label);
         product.setDescription(dto.description);
         product.setPrice(dto.price);
+        product.setSlug(dto.label.trim().toLowerCase());
         product.setCreatedAt(LocalDateTime.now());
         product.setBrand(brandService.getById(dto.brandId));
 
