@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Service
 @AllArgsConstructor
@@ -31,7 +33,7 @@ public class OrderServiceImpl implements IOrderService {
 
         order.setAddress(addressService.getById(dto.addressId));
         order.setCreatedAt(LocalDateTime.now());
-        order.setNumber("ORD-" + LocalDateTime.now().getYear() + "-" + (Math.random()*100));
+        order.setNumber("ORD-" + LocalDateTime.now().getYear() + "-" + ThreadLocalRandom.current().nextInt(000, 999));
         order.setUser(userService.getById("10"));
         orderRepository.saveAndFlush(order);
 
