@@ -13,6 +13,7 @@ public class OrderView {
     public interface OrderDetailView extends
             OrderListView,
             OrderProducts,
+            Address,
             AddressView.AddressDetailView,
             CreatedAt,
             UserView.UserDetailView{}

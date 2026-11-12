@@ -2,6 +2,7 @@ package fr.simplon.domedespuys.services;
 
 import fr.simplon.domedespuys.dto.AddressDTO;
 import fr.simplon.domedespuys.entity.Address;
+import fr.simplon.domedespuys.entity.User;
 import fr.simplon.domedespuys.interfaces.IAddressService;
 import fr.simplon.domedespuys.interfaces.IUserService;
 import fr.simplon.domedespuys.repository.AddressRepository;
@@ -38,7 +39,8 @@ public class AddressServiceImpl implements IAddressService {
         address.setFirstname(dto.firstname);
         address.setLastname(dto.lastname);
         address.setCreatedAt(LocalDateTime.now());
-        //address.setUser(userService.getById("10"));
+        address.setUser(userService.getById("10"));
+        //address.setUser(new User());
 
         addressRepository.saveAndFlush(address);
 
