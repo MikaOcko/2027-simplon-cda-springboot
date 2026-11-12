@@ -3,17 +3,22 @@ package fr.simplon.domedespuys.services;
 import fr.simplon.domedespuys.dto.Order.OrderPostDTO;
 import fr.simplon.domedespuys.dto.Order.OrderPutDTO;
 import fr.simplon.domedespuys.entity.Order;
+import fr.simplon.domedespuys.interfaces.IAddressService;
 import fr.simplon.domedespuys.interfaces.IOrderService;
+import fr.simplon.domedespuys.interfaces.IUserService;
 import fr.simplon.domedespuys.repository.OrderRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
 @AllArgsConstructor
 public class OrderServiceImpl implements IOrderService {
     private OrderRepository orderRepository;
+    private IAddressService addressService;
+    private IUserService userService;
 
     @Override
     public List<Order> getCollection() {
@@ -22,7 +27,15 @@ public class OrderServiceImpl implements IOrderService {
 
     @Override
     public Order create(OrderPostDTO dto) {
-        return null;
+        Order order = new Order();
+
+        order.setAddress(addressService.getById(dto.addressId);
+        order.setCreatedAt(LocalDateTime.now());
+        order.setNumber("ORD-" + LocalDateTime.now().getYear() + "-" + (Math.random()*100));
+        order.setUser(userService.getById("10"));
+        orderRepository.saveAndFlush(order);
+
+        return order;
     }
 
     @Override
