@@ -9,6 +9,7 @@ import fr.simplon.domedespuys.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Service
@@ -24,7 +25,8 @@ public class UserServiceImpl implements IUserService {
         user.setPassword(dto.password);
         user.setFirstname(dto.firstname);
         user.setLastname(dto.lastname);
-        //user.setCreatedAt(new LocalDateTime());
+        user.setCreatedAt(LocalDateTime.now());
+        
         userRepository.saveAndFlush(user);
 
         return user;
@@ -53,6 +55,12 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public boolean delete(String id) {
-        return false;
+        try {
+            userRepository.deleteById(Long.parseLong(id));
+            return true;
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 }
