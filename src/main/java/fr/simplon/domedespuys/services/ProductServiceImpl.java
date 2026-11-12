@@ -1,6 +1,8 @@
 package fr.simplon.domedespuys.services;
 
+import fr.simplon.domedespuys.dto.BrandDTO;
 import fr.simplon.domedespuys.dto.ProductDTO;
+import fr.simplon.domedespuys.entity.Brand;
 import fr.simplon.domedespuys.entity.Product;
 import fr.simplon.domedespuys.interfaces.IBrandService;
 import fr.simplon.domedespuys.interfaces.IProductService;
@@ -48,6 +50,16 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public Product update(String id, ProductDTO dto) {
-        return null;
+        Product product = getById(id);
+        if (product != null) {
+            product.setLabel(dto.label);
+            product.setDescription(dto.description);
+            product.setPrice(dto.price);
+            product.setSlug(dto.label.trim().toLowerCase());
+            product.setBrand(brandService.getById(dto.brandId));
+
+            productRepository.saveAndFlush(product);
+        }
+        return product;
     }
 }

@@ -40,5 +40,11 @@ public class ProductRestController {
         return productService.getById(id);
     }
 
+    @PutMapping("/{id}")
+    @JsonView(ProductView.ProductDetailView.class)
+    private Product updateProduct(@PathVariable String id, @RequestBody ProductDTO dto){
+        return productService.update(id, dto);
+    }
+
 
 }
