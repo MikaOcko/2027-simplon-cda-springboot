@@ -60,6 +60,7 @@ public class ProductServiceImpl implements IProductService {
     @Override
     public Product update(String id, ProductDTO dto) {
         Product product = getById(id);
+        
         if (product != null) {
             product.setLabel(dto.label);
             product.setDescription(dto.description);
@@ -69,6 +70,7 @@ public class ProductServiceImpl implements IProductService {
 
             productRepository.saveAndFlush(product);
         }
+
         return product;
     }
 }
