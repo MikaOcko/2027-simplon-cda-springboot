@@ -49,6 +49,13 @@ public class OrderServiceImpl implements IOrderService {
 
     @Override
     public Order update(String id, OrderPutDTO dto) {
-        return null;
+        Order order = getById(id);
+
+        if (order != null){
+            order.setStatus(dto.status);
+            orderRepository.saveAndFlush(order);
+        }
+
+        return order;
     }
 }

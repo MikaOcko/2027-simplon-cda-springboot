@@ -2,6 +2,7 @@ package fr.simplon.domedespuys.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import fr.simplon.domedespuys.dto.Order.OrderPostDTO;
+import fr.simplon.domedespuys.dto.Order.OrderPutDTO;
 import fr.simplon.domedespuys.entity.Order;
 import fr.simplon.domedespuys.interfaces.IOrderService;
 import fr.simplon.domedespuys.view.OrderView;
@@ -40,5 +41,11 @@ public class OrderRestController {
     public Order createOrder(@RequestBody OrderPostDTO dto) {
 
         return orderService.create(dto);
+    }
+
+    @PutMapping("/{id}")
+    @JsonView(OrderView.OrderDetailView.class)
+    public Order updateOrder(@PathVariable String id, @RequestBody OrderPutDTO dto) {
+        return orderService.update(id, dto);
     }
 }
