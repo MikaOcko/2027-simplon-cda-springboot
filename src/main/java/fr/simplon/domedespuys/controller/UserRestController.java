@@ -3,6 +3,7 @@ package fr.simplon.domedespuys.controller;
 import com.fasterxml.jackson.annotation.JsonView;
 import fr.simplon.domedespuys.dto.BrandDTO;
 import fr.simplon.domedespuys.dto.User.UserPostDTO;
+import fr.simplon.domedespuys.dto.User.UserPutDTO;
 import fr.simplon.domedespuys.entity.Brand;
 import fr.simplon.domedespuys.entity.User;
 import fr.simplon.domedespuys.interfaces.IUserService;
@@ -29,11 +30,6 @@ public class UserRestController {
         return userService.getCollection();
     }
     */
-    @GetMapping("/{id}")
-    @JsonView(UserView.UserDetailView.class)
-    private User getUserById(@PathVariable String id){
-        return userService.getById(id);
-    }
 
     @PostMapping
     @JsonView(UserView.UserDetailView.class)
@@ -41,6 +37,21 @@ public class UserRestController {
         return userService.create(dto);
     }
 
+    @GetMapping("/{id}")
+    @JsonView(UserView.UserDetailView.class)
+    private User getUserById(@PathVariable String id){
+        return userService.getById(id);
+    }
 
+    @PutMapping("/{id}")
+    private User updateUser(@PathVariable String id, @RequestBody UserPutDTO dto){
+        return userService.update(id, dto);
+    }
+
+    @DeleteMapping("/{id}")
+    @JsonView(UserView.UserDetailView.class)
+    private boolean deleteUser(@PathVariable String id){
+        return userService.delete(id);
+    }
 }
 
