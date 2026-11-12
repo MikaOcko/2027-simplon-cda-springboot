@@ -1,10 +1,12 @@
 package fr.simplon.domedespuys.services;
 
 import fr.simplon.domedespuys.dto.BrandDTO;
+import fr.simplon.domedespuys.dto.ImageDTO;
 import fr.simplon.domedespuys.dto.ProductDTO;
 import fr.simplon.domedespuys.entity.Brand;
 import fr.simplon.domedespuys.entity.Product;
 import fr.simplon.domedespuys.interfaces.IBrandService;
+import fr.simplon.domedespuys.interfaces.IImageService;
 import fr.simplon.domedespuys.interfaces.IProductService;
 import fr.simplon.domedespuys.repository.ProductRepository;
 import lombok.AllArgsConstructor;
@@ -19,6 +21,7 @@ public class ProductServiceImpl implements IProductService {
 
     private ProductRepository productRepository;
     private IBrandService brandService;
+    private IImageService imageService;
 
     @Override
     public List<Product> getCollection() {
@@ -37,6 +40,12 @@ public class ProductServiceImpl implements IProductService {
         product.setBrand(brandService.getById(dto.brandId));
 
         productRepository.saveAndFlush(product);
+
+        for (ImageDTO imageDTO : dto.images){
+            imageService.create(imageDTO, product);
+        }
+
+        imageService.flush();
 
         return product;
     }

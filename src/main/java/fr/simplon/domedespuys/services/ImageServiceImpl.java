@@ -28,4 +28,10 @@ public class ImageServiceImpl implements IImageService {
         imageRepository.save(image);
         return image;
     }
+
+    @Override
+    public void flush(){
+        imageRepository.flush();
+    }
+
 }
