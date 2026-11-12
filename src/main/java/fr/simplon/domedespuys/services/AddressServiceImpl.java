@@ -16,7 +16,21 @@ public class AddressServiceImpl implements IAddressService {
 
     @Override
     public Address create(AddressDTO dto) {
-        return null;
+        Address address = new Address();
+
+            address.setLine(dto.line);
+            address.setExtraLine(dto.extraLine);
+            address.setCity(dto.city);
+            address.setZipCode(dto.zipCode);
+            address.setCountry(dto.country);
+            address.setPhone(dto.phone);
+            address.setFirstname(dto.firstname);
+            address.setLastname(dto.lastname);
+
+            addressRepository.saveAndFlush(address);
+
+        return address;
+
     }
 
     @Override
