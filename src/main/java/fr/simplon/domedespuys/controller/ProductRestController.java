@@ -9,6 +9,7 @@ import fr.simplon.domedespuys.interfaces.IProductService;
 import fr.simplon.domedespuys.repository.ProductRepository;
 import fr.simplon.domedespuys.view.BrandView;
 import fr.simplon.domedespuys.view.ProductView;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,13 +25,12 @@ public class ProductRestController {
     @GetMapping
     @JsonView(ProductView.ProductListView.class)
     private List<Product> getProducts(){
-
         return productService.getCollection();
     }
 
     @PostMapping
     @JsonView(ProductView.ProductDetailView.class)
-    public Product createProduct(@RequestBody ProductDTO dto) {
+    public Product createProduct(@Valid @RequestBody ProductDTO dto) {
         return productService.create(dto);
     }
 
@@ -42,7 +42,7 @@ public class ProductRestController {
 
     @PutMapping("/{id}")
     @JsonView(ProductView.ProductDetailView.class)
-    private Product updateProduct(@PathVariable String id, @RequestBody ProductDTO dto){
+    private Product updateProduct(@Valid @PathVariable String id, @RequestBody ProductDTO dto){
         return productService.update(id, dto);
     }
 
