@@ -23,24 +23,12 @@ public class OrderProductServiceImpl implements IOrderProductService {
         OrderProduct orderProduct = new OrderProduct();
 
         orderProduct.setQuantity(dto.quantity);
-        orderProduct.setPrice(dto.quantity);
+        orderProduct.setPrice(dto.price);
         orderProduct.setProduct(productService.getById(dto.productId));
         orderProduct.setPurchase(purchase);
 
         orderProductRepository.saveAndFlush(orderProduct);
 
         return orderProduct;
-    }
-
-    @Override
-    public OrderProduct getById(String id) {
-        return orderProductRepository
-                .findById(Long.parseLong(id))
-                .orElse(null);
-    }
-
-    @Override
-    public List<OrderProduct> getCollection() {
-        return orderProductRepository.findAll();
     }
 }

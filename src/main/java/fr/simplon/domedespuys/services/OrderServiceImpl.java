@@ -2,6 +2,7 @@ package fr.simplon.domedespuys.services;
 
 import fr.simplon.domedespuys.dto.Order.OrderPostDTO;
 import fr.simplon.domedespuys.dto.Order.OrderPutDTO;
+import fr.simplon.domedespuys.entity.Address;
 import fr.simplon.domedespuys.entity.Order;
 import fr.simplon.domedespuys.interfaces.IAddressService;
 import fr.simplon.domedespuys.interfaces.IOrderService;
@@ -31,10 +32,18 @@ public class OrderServiceImpl implements IOrderService {
     public Order create(OrderPostDTO dto) {
         Order order = new Order();
 
-        order.setAddress(addressService.getById(dto.addressId));
         order.setCreatedAt(LocalDateTime.now());
         order.setNumber("ORD-" + LocalDateTime.now().getYear() + "-" + ThreadLocalRandom.current().nextInt(000, 999));
         order.setUser(userService.getById("10"));
+        order.setAddress(addressService.getById(dto.addressId));
+        /*
+        Address address = addressService.getById(dto.addressId);
+        if (address == null){
+            throw new InvaliAddressException();
+        }
+
+        order.setAddress(address);
+        */
         orderRepository.saveAndFlush(order);
 
         return order;
