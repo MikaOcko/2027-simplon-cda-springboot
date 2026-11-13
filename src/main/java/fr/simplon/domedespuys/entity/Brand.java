@@ -24,7 +24,7 @@ public class Brand {
     @JsonView(BrandView.Label.class)
     private String label;
 
-    @Column(nullable = true, length = 20, columnDefinition = "TEXT")
+    @Column(nullable = true, columnDefinition = "TEXT")
     @JsonView(BrandView.Logo.class)
     private String logo;
 

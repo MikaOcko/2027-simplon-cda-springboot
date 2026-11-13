@@ -25,7 +25,7 @@ public class Order {
     @JsonView(OrderView.Id.class)
     private Long id;
 
-    @Column(length = 20, unique = true, nullable = false)
+    @Column(length = 50, unique = true, nullable = false)
     @JsonView(OrderView.Number.class)
     private String number;
 
