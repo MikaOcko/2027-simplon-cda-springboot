@@ -7,7 +7,6 @@ import lombok.AllArgsConstructor;
 import org.jspecify.annotations.NonNull;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -33,7 +32,7 @@ public class DataLoaderConfig implements CommandLineRunner {
     public final Integer NB_PRODUCT= 40;
     public final Integer NB_IMAGE= 80;
     public final Integer NB_ORDER = 20;
-    public final Integer NB_ORDER_PRODUCT = 20;
+    public final Integer NB_ORDER_PRODUCT = 40;
 
     @Override
     public void run(String @NonNull ... args) {
@@ -265,6 +264,8 @@ public class DataLoaderConfig implements CommandLineRunner {
             Faker faker = new Faker(Locale.of("fr"));
 
             List<Order> purchases = orderRepository.findAll();
+            List<Product> products = productRepository.findAll();
+
             Random random = new Random();
 
             for (int i = 0; i < NB_ORDER_PRODUCT; i++) {
@@ -275,6 +276,9 @@ public class DataLoaderConfig implements CommandLineRunner {
 
                 Order purchase = purchases.get(random.nextInt(purchases.size()));
                 purchaseProduct.setPurchase(purchase);
+
+                Product product = products.get(random.nextInt(purchases.size()));
+                purchaseProduct.setProduct(product);
 
                 orderProductRepository.save(purchaseProduct);
             }
@@ -299,9 +303,11 @@ public class DataLoaderConfig implements CommandLineRunner {
 
     private boolean hasProbability(int expected, int max) {
         Random random = new Random();
-        // random.nextInt(max) = génère un entier aléatoire entre 0 et MAX
-        // expected = la proba attendue
-        // Si le random est inférieure ou égale à la prob, alors on renvoie true
+        /*
+         random.nextInt(max) = génère un entier aléatoire entre 0 et MAX
+         expected = la proba attendue
+         Si le random est inférieure ou égale à la prob, alors on renvoie true
+        */
         return random.nextInt(max) < expected;
     }
 

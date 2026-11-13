@@ -6,6 +6,7 @@ import fr.simplon.domedespuys.dto.Order.OrderPutDTO;
 import fr.simplon.domedespuys.entity.Order;
 import fr.simplon.domedespuys.interfaces.IOrderService;
 import fr.simplon.domedespuys.view.OrderView;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,14 +39,14 @@ public class OrderRestController {
 
     @PostMapping
     @JsonView(OrderView.OrderDetailView.class)
-    public Order createOrder(@RequestBody OrderPostDTO dto) {
+    public Order createOrder(@Valid @RequestBody OrderPostDTO dto) {
 
         return orderService.create(dto);
     }
 
     @PutMapping("/{id}")
     @JsonView(OrderView.OrderDetailView.class)
-    public Order updateOrder(@PathVariable String id, @RequestBody OrderPutDTO dto) {
+    public Order updateOrder(@PathVariable String id,@Valid @RequestBody OrderPutDTO dto) {
         return orderService.update(id, dto);
     }
 }
