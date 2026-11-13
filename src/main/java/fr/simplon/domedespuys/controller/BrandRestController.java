@@ -5,6 +5,8 @@ import fr.simplon.domedespuys.dto.BrandDTO;
 import fr.simplon.domedespuys.entity.Brand;
 import fr.simplon.domedespuys.interfaces.IBrandService;
 import fr.simplon.domedespuys.view.BrandView;
+import fr.simplon.domedespuys.view.ExceptionView;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,18 +32,18 @@ public class BrandRestController {
 
     @PostMapping
     @JsonView(BrandView.BrandDetailView.class)
-    public Brand createBrand(@RequestBody BrandDTO dto) {
+    public Brand createBrand(@Valid @RequestBody BrandDTO dto) {
         return brandService.create(dto);
     }
 
     @PutMapping("/{id}")
     @JsonView(BrandView.BrandDetailView.class)
-    public Brand updateBrand(@PathVariable String id, @RequestBody BrandDTO dto) {
+    public Brand updateBrand(@PathVariable String id, @Valid @RequestBody BrandDTO dto) {
         return brandService.update(id, dto);
     }
 
     @DeleteMapping("/{id}")
-    @JsonView(BrandView.BrandDetailView.class)
+    @JsonView({BrandView.BrandDetailView.class, ExceptionView.ExceptionViewFull.class})
     public boolean delete(@PathVariable String id) {
         return brandService.delete(id);
     }
