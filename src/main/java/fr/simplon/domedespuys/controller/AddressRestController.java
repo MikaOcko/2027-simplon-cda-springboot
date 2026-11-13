@@ -5,6 +5,8 @@ import fr.simplon.domedespuys.dto.AddressDTO;
 import fr.simplon.domedespuys.entity.Address;
 import fr.simplon.domedespuys.interfaces.IAddressService;
 import fr.simplon.domedespuys.view.AddressView;
+import fr.simplon.domedespuys.view.ExceptionView;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,18 +24,18 @@ public class AddressRestController {
 
     @PostMapping
     @JsonView(AddressView.AddressDetailView.class)
-    public Address createAddress(@RequestBody AddressDTO dto) {
+    public Address createAddress(@Valid @RequestBody AddressDTO dto) {
         return addressService.create(dto);
     }
 
     @PutMapping("/{id}")
     @JsonView(AddressView.AddressDetailView.class)
-    public Address updateAddress(@PathVariable String id, @RequestBody AddressDTO dto) {
+    public Address updateAddress(@PathVariable String id, @Valid @RequestBody AddressDTO dto) {
         return addressService.update(id, dto);
     }
 
     @DeleteMapping("/{id}")
-    @JsonView(AddressView.AddressDetailView.class)
+    @JsonView({AddressView.AddressDetailView.class, ExceptionView.ExceptionViewFull.class})
     public boolean delete(@PathVariable String id) {
         return addressService.delete(id);
     }
