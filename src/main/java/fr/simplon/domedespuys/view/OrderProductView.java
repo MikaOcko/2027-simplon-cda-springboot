@@ -7,10 +7,13 @@ public class OrderProductView {
     public interface Product{}
     public interface Order{}
 
-    public interface OrderProductListView extends Quantity, Price{}
-    public interface OrderProductDetailView extends OrderProductListView,
-            Order,
-            OrderView.OrderListView,
+    public interface OrderProductListView extends
+            Quantity,
+            Price,
             Product,
             ProductView.ProductListView{}
+
+    public interface OrderProductDetailView extends OrderProductListView,
+            Order,
+            OrderView.OrderListView{}
 }
